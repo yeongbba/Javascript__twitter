@@ -1,65 +1,53 @@
 const https = require("https");
-
-// Submit result to codestates database
-const { LAMBDA_URL, LAMBDA_KEY, TRAVIS_PULL_REQUEST_SLUG } = process.env;
-
-if (LAMBDA_KEY === "\n") {
-  throw new Error("lambda key is missing");
-}
+const { URCLASS_URL, ASSESSMENT_ID, TRAVIS_PULL_REQUEST_SLUG } = process.env;
 
 if (TRAVIS_PULL_REQUEST_SLUG === "\n") {
   throw new Error("github username is missing");
 }
 
-const username = TRAVIS_PULL_REQUEST_SLUG.split('/')[0];
-console.log(username);
+const username = TRAVIS_PULL_REQUEST_SLUG.split("/")[0];
 
 const options = {
-  hostname: LAMBDA_URL,
-  path: "/feature/submition/create",
+  hostname: URCLASS_URL,
+  path: `/Prod/submit/`,
   method: "POST",
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "application/json"
   }
 };
 
 console.log(JSON.stringify(options));
 
-const req = https.request(options, res => {
-  let data;
+const body = {
+  assessment_id: ASSESSMENT_ID,
+  githubUsername: username,
+  result: {}
+};
 
-  res.on("data", chunk => {
-    data += chunk;
-  });
+makeRequest(options, body);
 
-  res.on("end", () => {
-    console.log('data from labmda is ', data);
-
-    if (res.statusCode >= 400) {
-      if (res.statusCode === 400) {
-        throw new Error("invalid github username.");
+function makeRequest(options, body) {
+  const req = https.request(options, res => {
+    let data;
+    res.on("data", chunk => {
+      data += chunk;
+    });
+    res.on("end", () => {
+      console.log("data from urclass is ", data);
+      if (res.statusCode >= 400) {
+        if (res.statusCode === 400) {
+          throw new Error("invalid github username.");
+        }
+        throw new Error("There is an error on response from urclass.");
       }
-      throw new Error("There is an error on response from lambda.");
-    }
+    });
   });
-});
 
-req.on("error", e => {
-  console.log(e);
-  throw new Error("data did not send to lambda");
-});
+  req.on("error", e => {
+    console.log(e);
+    throw new Error("data did not send to urclass");
+  });
 
-// send the request
-req.write(
-  JSON.stringify(
-    {
-      title: "Twittler",
-      githubUsername: username,
-      lambdaKey: LAMBDA_KEY,
-      passed: 0,
-      failed: 0,
-      assessmentId: 3
-    }
-  )
-);
-req.end();
+  req.write(JSON.stringify(body));
+  req.end();
+}
