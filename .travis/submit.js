@@ -9,11 +9,11 @@ const username = TRAVIS_PULL_REQUEST_SLUG.split("/")[0];
 
 const options = {
   hostname: URCLASS_URL,
-  path: `/Prod/submit/`,
+  path: `/production/submit/sprint`,
   method: "POST",
   headers: {
-    "Content-Type": "application/json"
-  }
+    "Content-Type": "application/json",
+  },
 };
 
 console.log(JSON.stringify(options));
@@ -21,15 +21,21 @@ console.log(JSON.stringify(options));
 const body = {
   assessment_id: ASSESSMENT_ID,
   githubUsername: username,
-  result: {}
+  result: {
+    stats: {
+      tests: 1,
+      passes: 1,
+    },
+  },
+  type: "mocha",
 };
 
 makeRequest(options, body);
 
 function makeRequest(options, body) {
-  const req = https.request(options, res => {
+  const req = https.request(options, (res) => {
     let data;
-    res.on("data", chunk => {
+    res.on("data", (chunk) => {
       data += chunk;
     });
     res.on("end", () => {
@@ -43,7 +49,7 @@ function makeRequest(options, body) {
     });
   });
 
-  req.on("error", e => {
+  req.on("error", (e) => {
     console.log(e);
     throw new Error("data did not send to urclass");
   });
