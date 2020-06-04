@@ -21,7 +21,13 @@ console.log(JSON.stringify(options));
 const body = {
   assessment_id: ASSESSMENT_ID,
   githubUsername: username,
-  result: {},
+  result: {
+    stats: {
+      tests: 1,
+      passes: 1,
+    },
+  },
+  type: "mocha",
 };
 
 makeRequest(options, body);
