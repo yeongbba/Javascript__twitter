@@ -4,14 +4,51 @@
   <meta charset="utf-8" />
   <title>twittler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  <script src="data.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
 </head>
-<body>
+<body id="screen">
   <!-- 여기에 HTML 구조를 작성하세요. 아래 코드는 예제이며, 얼마든지 바꿀 수 있습니다 -->
-  <div id="greeting">twittler</div>
-  <div id="test"></div>
+  <header class="greeting">twittler</header>
+  
+  <form class="tweet">
+    <div class="tweet__box">
+      <div class="tweet__username">
+        <span>Username</span>
+        <input type="text" />
+      </div>
+      <div class="tweet__message">
+        <span>Message</span>
+        <input type="text" value="" />
+      </div>
 
-  <script src="script.js"></script>
+      <input type="button" class="tweet__btn" value="tweet!" />
+
+    </div>
+  </form>
+  
+  <div class="refresh">
+    <button class="refreah__btn">
+      <i class="fas fa-sync-alt"></i>
+      <span>check new tweet</span>
+    </button>
+  </div>
+
+  <div class="comment">
+  <template>
+    <div class="comment__row">
+      <div class="comment__row-info">
+        <span class="comment__user"></span>
+        <span class="comment__time"></span>
+      </div>
+      <div class="comment__row-comment">
+        <span class="comment__comment"></span>
+      </div>
+    </div>
+  </template>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous"></script>
 </body>
 </html>

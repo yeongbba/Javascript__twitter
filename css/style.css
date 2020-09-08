@@ -1,0 +1,8 @@
+/* css 초기화 */
+@import "reset.css";
+
+/* css 트윗 입력창 */
+@import "tweet.css";
+
+/* css 댓글창 */
+@import "comment.css";
