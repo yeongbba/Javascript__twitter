@@ -1,5 +1,11 @@
 .refresh {
     width: 80%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.refresh__box {
     height: 50px;
     background-color: #626eef;
     box-sizing: border-box;
@@ -9,19 +15,22 @@
     padding: 15px;
 }
 
-.refreah__btn {
+.refresh__btn {
     padding: 5px;
     background-color: white;
     border: none;
     border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: FontAwesome;
 }
 
-.refreah__btn span {
-    font-size: 15px;
+.refresh__btn:active {
+    background-color: rgb(255, 238, 0);
+    color: black;
 }
 
 .comment {
-    width: 80%;
     box-sizing: border-box;
     background-color: beige;
     padding: 20px;

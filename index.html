@@ -8,7 +8,9 @@
 </head>
 <body id="screen">
   <!-- 여기에 HTML 구조를 작성하세요. 아래 코드는 예제이며, 얼마든지 바꿀 수 있습니다 -->
-  <header class="greeting">twittler</header>
+  <header class="greeting">
+    <span>twittler</span>
+  </header>
   
   <form class="tweet">
     <div class="tweet__box">
@@ -21,31 +23,30 @@
         <input type="text" value="" />
       </div>
 
-      <input type="button" class="tweet__btn" value="tweet!" />
+      <input type="button" class="tweet__btn" value="tweet &#xf4ba" />
 
     </div>
   </form>
   
-  <div class="refresh">
-    <button class="refreah__btn">
-      <i class="fas fa-sync-alt"></i>
-      <span>check new tweet</span>
-    </button>
-  </div>
-
-  <div class="comment">
-  <template>
-    <div class="comment__row">
-      <div class="comment__row-info">
-        <span class="comment__user"></span>
-        <span class="comment__time"></span>
-      </div>
-      <div class="comment__row-comment">
-        <span class="comment__comment"></span>
-      </div>
+  <form class="refresh">
+    <div class="refresh__box">
+      <input type="button" class="refresh__btn" value="&#xf01e; check new tweet" />
     </div>
-  </template>
-  </div>
+
+    <div class="comment">
+    <template>
+      <div class="comment__row">
+        <div class="comment__row-info">
+          <span class="comment__user"></span>
+          <span class="comment__time"></span>
+        </div>
+        <div class="comment__row-comment">
+          <span class="comment__comment"></span>
+        </div>
+      </div>
+    </template>
+    </div>
+  </form>
 
   <script src="js/data.js"></script>
   <script src="js/script.js"></script>

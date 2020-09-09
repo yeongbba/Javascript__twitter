@@ -32,8 +32,37 @@ tweetbtn.addEventListener('click', () => {
   
 });
 
+function InsertToArray() {
+    let tweetArr = [];
+    for (let i = 0; i < 8; i++) {
+        tweetArr.push(generateNewTweet());
+    }
+    return tweetArr;
+};
 
-// generateNewTweet을 호출할 때마다 새로운 트윗을 생성합니다.
-//console.log(generateNewTweet());
 
+let refreshBtn = document.querySelector(".refresh__btn");
+
+refreshBtn.addEventListener('click', () => {
+    let commentRows = document.querySelectorAll(".comment__row"); 
+    for (let i = 0; i < commentRows.length; i++) {
+        commentRows[i].remove();
+    }
+
+    let tweetArr = InsertToArray();
+    for (let i = 0; i < tweetArr.length; i++) {
+        let template = document.querySelector("template");
+        let cloneNode = document.importNode(template.content, true);
+        let spans = cloneNode.querySelectorAll("span");
+        let commentBox = document.querySelector(".comment");
+      
+        spans[0].textContent = tweetArr[i].user;
+        spans[1].textContent = tweetArr[i].created_at;
+        spans[2].textContent = tweetArr[i].message;
+        
+        commentBox.append(cloneNode);
+      }
+});
+
+//이름 누르면 똑같은 이림만,...
 //document.getElementById('test').innerHTML = 'hello twittler, check developer console!';
