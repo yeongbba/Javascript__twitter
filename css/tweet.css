@@ -24,6 +24,19 @@
   letter-spacing: 2px;
 }
 
+@keyframes fadeIn {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+
+.greeting span {
+  animation: fadeIn 2.5s ease-in-out;
+}
+
 .tweet {
   width: 80%;
   height: 240px;
@@ -71,7 +84,7 @@
 }
 
 .tweet__btn {
-  font-size: 16px;
+  font-size: 17px;
   color: rgba(0, 0, 0, 0.8);
   padding: 5px;
   background-color: white;
@@ -79,5 +92,11 @@
   border-radius: 5px;
   width: 100px;
   font-weight: 600;
+  font-family: FontAwesome;
+  transition: all 1.5s linear;
 }
 
+.tweet__btn:hover {
+  background-color: black;
+  color: white;
+}
