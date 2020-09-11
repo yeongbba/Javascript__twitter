@@ -26,10 +26,10 @@
 
 @keyframes fadeIn {
   from {
-      opacity:0;
+    opacity: 0;
   }
   to {
-      opacity:1;
+    opacity: 1;
   }
 }
 
@@ -69,6 +69,11 @@
   width: 35%;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 3px;
+  white-space: normal;
+}
+
+.tweet__username input:focus {
+  outline: none;
 }
 
 .tweet__message {
@@ -77,10 +82,15 @@
   margin-bottom: 15px;
 }
 
-.tweet__message input {
+.tweet__message textarea {
   height: 80px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 3px;
+  white-space: normal;
+}
+
+.tweet__message textarea:focus {
+  outline: none;
 }
 
 .tweet__btn {
@@ -94,9 +104,16 @@
   font-weight: 600;
   font-family: FontAwesome;
   transition: all 1.5s linear;
+  cursor: pointer;
 }
 
 .tweet__btn:hover {
   background-color: black;
   color: white;
+  outline: none;
+}
+
+.tweet__btn:active,
+:focus {
+  outline: none;
 }
