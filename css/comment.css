@@ -13,9 +13,11 @@
   display: flex;
   align-items: center;
   padding: 15px;
+  position: relative;
 }
 
-.refresh__btn {
+.refresh__btn,
+.goback__btn {
   padding: 5px;
   background-color: white;
   border: none;
@@ -23,11 +25,15 @@
   font-size: 15px;
   font-weight: 600;
   font-family: FontAwesome;
+  position: absolute;
+  cursor: pointer;
 }
 
-.refresh__btn:active {
+.refresh__btn:active,
+.goback__btn:active {
   background-color: rgb(255, 238, 0);
   color: black;
+  outline: none;
 }
 
 .comment {
@@ -60,4 +66,8 @@
 .comment__row-comment {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   padding-bottom: 7px;
+}
+
+.display__none {
+  display: none;
 }
