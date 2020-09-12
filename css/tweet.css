@@ -34,7 +34,8 @@
 }
 
 .greeting span {
-  animation: fadeIn 2.5s ease-in-out;
+  animation: fadeIn 1.2s ease-in-out;
+  animation-delay: 2s;
 }
 
 .tweet {
