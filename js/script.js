@@ -30,6 +30,9 @@ function createNewTweet() {
   spans[2].textContent = messageInput.value;
 
   commentBox.prepend(cloneNode);
+  usernameInput.value = "";
+  messageInput.value = "";
+
   addClickUserEvent();
 }
 
